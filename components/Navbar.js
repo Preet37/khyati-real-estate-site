@@ -1,41 +1,22 @@
-// components/Navbar.js
-"use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/properties", label: "Properties" },
-  { href: "/buyers", label: "Buyers" },
-  { href: "/sellers", label: "Sellers" },
-  { href: "/contact", label: "Contact" },
-];
 
 export default function Navbar() {
-  const pathname = usePathname();
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
-      <div className="container flex items-center justify-between h-20">
-        <Link href="/" className="text-xl font-bold tracking-wide font-heading">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-md">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+        <Link href="/" className="text-2xl font-bold font-heading">
           Khyati Karia
         </Link>
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`hover:text-gray-900 transition ${
-                pathname === l.href
-                  ? "text-gray-900 font-semibold"
-                  : "text-gray-600"
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </div>
+        <nav className="hidden md:flex items-center space-x-6">
+          <Link href="/properties" className="text-gray-600 hover:text-gold transition-colors">Properties</Link>
+          <Link href="/buyers" className="text-gray-600 hover:text-gold transition-colors">Buyers</Link>
+          <Link href="/sellers" className="text-gray-600 hover:text-gold transition-colors">Sellers</Link>
+          <Link href="/about" className="text-gray-600 hover:text-gold transition-colors">About</Link>
+          <Link href="/contact" className="ml-4 bg-gold text-gray-900 px-5 py-2.5 rounded-lg text-sm font-semibold shadow-sm hover:brightness-95 transition">
+            Contact
+          </Link>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
